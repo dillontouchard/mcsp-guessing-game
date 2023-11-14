@@ -1,23 +1,25 @@
 function play() {
     var arr = [];
-    var count = 0;
+    var guessCount = 0;
     var secretNumber = 10;
-    var user = prompt("Please fill in your Name");
+    do {user = prompt("Please fill in your Name");
+    }
+        while (user === "" || user === null || user === undefined);
     while(true) {
         var guess = prompt("Guess a number.");
         if(guess > secretNumber) {
-            alert("Guess Lower!");
+            alert(`${user} Guess Lower!`);
         }
         if (guess < secretNumber) {
-            alert("Guess Higher!");
+            alert(`${user} Guess Higher!`);
         }
         if (guess !== secretNumber) {
-            count ++;
+            guessCount ++;
             arr.push(guess);
         }
         if (guess == secretNumber && count > 1) {
             arr.pop();
-            alert(`${user} correct! It took you ${count} guesses!\nYour previous guesses were ${arr}`);
+            alert(`${user} correct! It took you ${guessCount} guesses!\nYour previous guesses were ${arr}`);
             var replayGame = prompt(`${user} would you like to play again? Input Yes or No`);
             if (replayGame === "Yes" || replayGame === "yes") {
                 play();
